@@ -1,0 +1,13 @@
+---
+version: '2'
+services:
+  alpine-sshd:
+    ports:
+      - "2222:22"
+    image: alpine-sshd:latest
+    build:
+      context: .
+      args:
+        - USER
+        - PASSWORD
+        - ROOT_PASSWORD
