@@ -17,7 +17,7 @@ RUN passwd -d root && \
     sed -i s/#PubkeyAuthentication.*/PubkeyAuthentication\ yes/ /etc/ssh/sshd_config && \
     sed -i s/#LogLevel.*/LogLevel\ DEBUG/ /etc/ssh/sshd_config
 
-COPY ./id_transfer.rsa.pub /home/$USER/.ssh/authorized_keys
+COPY ./id_transfer.pub /home/$USER/.ssh/authorized_keys
 
 RUN chown -Rf $USER:$USER /home/$USER/.ssh/ && \
     chmod 0700 /home/$USER/.ssh/ && \
