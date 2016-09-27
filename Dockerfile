@@ -16,7 +16,6 @@ RUN passwd -d root && \
     echo "$USER:PASSWORD" | chpasswd && \
     sed -i s/#PubkeyAuthentication.*/PubkeyAuthentication\ yes/ /etc/ssh/sshd_config && \
     sed -i s/#PermitRootLogin.*/PermitRootLogin\ no/ /etc/ssh/sshd_config && \
-    sed -i s/#MaxAuthTries.*/MaxAuthTries\ 3/ /etc/ssh/sshd_config && \
     sed -i s/#LogLevel.*/LogLevel\ DEBUG/ /etc/ssh/sshd_config
 
 COPY ./id_transfer.pub /home/$USER/.ssh/authorized_keys
