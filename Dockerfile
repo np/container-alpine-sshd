@@ -23,7 +23,7 @@ RUN passwd -d root && \
     sed -i s/#LogLevel.*/LogLevel\ DEBUG/ /etc/ssh/sshd_config && \
     echo "AllowUsers $USERNAME" >> /etc/ssh/sshd_config
 
-RUN chown -Rf $USERNAME:$USERNAME /home/$USERNAME/.ssh/ && \
+RUN chown -Rf $USERNAME:$GROUP /home/$USERNAME/.ssh/ && \
     chmod 0700 /home/$USERNAME/.ssh/ && \
     echo $PUBKEY > /home/$USERNAME/.ssh/authorized_keys && \
     chmod 0600 /home/$USERNAME/.ssh/authorized_keys
