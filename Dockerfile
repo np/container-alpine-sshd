@@ -13,8 +13,8 @@ ENV ROOT_PASSWORD='Fu+yUSOw6MEx++n4httgtQ'
 
 RUN passwd -d root && \
     echo "root:$ROOT_PASSWORD" | chpasswd && \
-    addgroup --gid $GID $GROUP &&\
-    adduser -D -h /home/$USERNAME -s /bin/bash --uid $UID --ingroup $GROUP $USERNAME && \
+    addgroup -g $GID $GROUP &&\
+    adduser -D -h /home/$USERNAME -s /bin/bash -u $UID -G $GROUP $USERNAME && \
     mkdir -p /home/$USER/.ssh && \
     echo "$USER:PASSWORD" | chpasswd && \
     sed -i s/#PubkeyAuthentication.*/PubkeyAuthentication\ yes/ /etc/ssh/sshd_config && \
