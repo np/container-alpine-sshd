@@ -21,7 +21,7 @@ RUN passwd -d root && \
     sed -i s/#PermitRootLogin.*/PermitRootLogin\ no/ /etc/ssh/sshd_config && \
     sed -i s/PermitRootLogin.*/PermitRootLogin\ no/ /etc/ssh/sshd_config && \
     sed -i s/#LogLevel.*/LogLevel\ DEBUG/ /etc/ssh/sshd_config && \
-    echo "AllowUsers $USER" >> /etc/ssh/sshd_config
+    echo "AllowUsers $USERNAME" >> /etc/ssh/sshd_config
 
 RUN chown -Rf $USERNAME:$USERNAME /home/$USERNAME/.ssh/ && \
     chmod 0700 /home/$USERNAME/.ssh/ && \
