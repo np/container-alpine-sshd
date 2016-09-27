@@ -15,15 +15,15 @@ RUN passwd -d root && \
     echo "root:$ROOT_PASSWORD" | chpasswd && \
     addgroup -g $GID $GROUP &&\
     adduser -D -h /home/$USERNAME -s /bin/bash -u $UID -G $GROUP $USERNAME && \
-    mkdir -p /home/$USER/.ssh && \
-    echo "$USER:PASSWORD" | chpasswd && \
+    mkdir -p /home/$USERNAME/.ssh && \
+    echo "$USERNAME:PASSWORD" | chpasswd && \
     sed -i s/#PubkeyAuthentication.*/PubkeyAuthentication\ yes/ /etc/ssh/sshd_config && \
     sed -i s/#PermitRootLogin.*/PermitRootLogin\ no/ /etc/ssh/sshd_config && \
     sed -i s/PermitRootLogin.*/PermitRootLogin\ no/ /etc/ssh/sshd_config && \
     sed -i s/#LogLevel.*/LogLevel\ DEBUG/ /etc/ssh/sshd_config && \
     echo "AllowUsers $USER" >> /etc/ssh/sshd_config
 
-RUN chown -Rf $USER:$USER /home/$USER/.ssh/ && \
-    chmod 0700 /home/$USER/.ssh/ && \
-    echo $PUBKEY > /home/$USER/.ssh/authorized_keys && \
-    chmod 0600 /home/$USER/.ssh/authorized_keys
+RUN chown -Rf $USERNAME:$USERNAME /home/$USERNAME/.ssh/ && \
+    chmod 0700 /home/$USERNAME/.ssh/ && \
+    echo $PUBKEY > /home/$USERNAME/.ssh/authorized_keys && \
+    chmod 0600 /home/$USERNAME/.ssh/authorized_keys
