@@ -20,5 +20,11 @@ chown -Rf $USERNAME:$GROUP /home/$USERNAME/.ssh/
 chmod 0700 /home/$USERNAME/.ssh/
 chmod 0600 /home/$USERNAME/.ssh/authorized_keys
 
+
+if [ -z ${MOTD+x} ]; then
+    echo "setting motd"
+    echo $MOTD > /etc/motd
+fi
+
 # do not detach (-D), log to stderr (-e), passthrough other arguments
 exec /usr/sbin/sshd -D -e "$@"
