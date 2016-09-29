@@ -11,7 +11,7 @@ ENV UID=1004
 ENV GID=20031
 ENV PUBKEY=''
 ENV ROOT_PASSWORD='Fu+yUSOw6MEx++n4httgtQ'
-ENV MOTD
+ENV MOTD=''
 
 
 RUN sed -i s/#PubkeyAuthentication.*/PubkeyAuthentication\ yes/ /etc/ssh/sshd_config && \
