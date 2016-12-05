@@ -8,7 +8,7 @@ echo "root:$ROOT_PASSWORD" | chpasswd
 addgroup -g $GID $GROUP
 adduser -D -h /home/$USERNAME -s /bin/bash -u $UID -G $GROUP $USERNAME
 mkdir -p /home/$USERNAME/.ssh
-echo "$USERNAME:PASSWORD" | chpasswd
+echo "$USERNAME:$PASSWORD" | chpasswd
 sed -i s/#PubkeyAuthentication.*/PubkeyAuthentication\ yes/ /etc/ssh/sshd_config
 sed -i s/#PermitRootLogin.*/PermitRootLogin\ no/ /etc/ssh/sshd_config
 sed -i s/PermitRootLogin.*/PermitRootLogin\ no/ /etc/ssh/sshd_config
